@@ -1,0 +1,67 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "xECM0TVF02gFVvDiXZC78VzV0l0=",
+			"path": "github.com/awalterschulze/gographviz",
+			"revision": "057e6a5e9343c1e85264a73798ca7c7a197c8b69",
+			"revisionTime": "2017-01-17T17:43:56Z"
+		},
+		{
+			"checksumSHA1": "OvFbeb1SnBBJ7LDP47C6QOO45pU=",
+			"path": "github.com/awalterschulze/gographviz/ast",
+			"revision": "057e6a5e9343c1e85264a73798ca7c7a197c8b69",
+			"revisionTime": "2017-01-17T17:43:56Z"
+		},
+		{
+			"checksumSHA1": "m42w7NuF0kmQmhh37+8Z9BXn+3o=",
+			"path": "github.com/awalterschulze/gographviz/errors",
+			"revision": "057e6a5e9343c1e85264a73798ca7c7a197c8b69",
+			"revisionTime": "2017-01-17T17:43:56Z"
+		},
+		{
+			"checksumSHA1": "lqOI5TYl/DfOgGqIIOUqIFIv7xM=",
+			"path": "github.com/awalterschulze/gographviz/lexer",
+			"revision": "057e6a5e9343c1e85264a73798ca7c7a197c8b69",
+			"revisionTime": "2017-01-17T17:43:56Z"
+		},
+		{
+			"checksumSHA1": "fNGmLnBfhRFn+hE2BZgFGZmkZlI=",
+			"path": "github.com/awalterschulze/gographviz/parser",
+			"revision": "057e6a5e9343c1e85264a73798ca7c7a197c8b69",
+			"revisionTime": "2017-01-17T17:43:56Z"
+		},
+		{
+			"checksumSHA1": "ILfjy1BJ7FI7atFUJ3PG0dfLlfA=",
+			"path": "github.com/awalterschulze/gographviz/token",
+			"revision": "057e6a5e9343c1e85264a73798ca7c7a197c8b69",
+			"revisionTime": "2017-01-17T17:43:56Z"
+		},
+		{
+			"checksumSHA1": "ThIhNL57ClU8phiLqn5WuECn1g8=",
+			"path": "github.com/imdario/go-ulid",
+			"revision": "80e2735d1c2c2b1d963bccaa2306f67e5f8d5da9",
+			"revisionTime": "2016-08-05T16:02:17Z"
+		},
+		{
+			"checksumSHA1": "rJab1YdNhQooDiBWNnt7TLWPyBU=",
+			"path": "github.com/pkg/errors",
+			"revision": "c605e284fe17294bda444b34710735b29d1a9d90",
+			"revisionTime": "2017-05-05T04:36:39Z"
+		},
+		{
+			"checksumSHA1": "d3sr67pW5iBydA+fLIV+pEhp9i4=",
+			"path": "github.com/scgolang/osc",
+			"revision": "973e996e838584d697efc0d60b107dba525a0763",
+			"revisionTime": "2017-03-13T03:35:09Z"
+		},
+		{
+			"checksumSHA1": "HS4C4js8y3j+EzOtewOMvHzMc/U=",
+			"path": "github.com/scgolang/sc",
+			"revision": "7293d7766267ff2aa0073fccd2c2af91d9539222",
+			"revisionTime": "2017-07-08T15:47:48Z"
+		}
+	],
+	"rootPath": "github.com/scgolang/scc"
+}
