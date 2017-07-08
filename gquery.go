@@ -17,8 +17,8 @@ type GQuery struct {
 }
 
 // Run runs the command.
-func (gq GQuery) Run(args []string) error {
-	fs := flag.NewFlagSet("gquery", flag.ExitOnError)
+func (gq *GQuery) Run(args []string) error {
+	fs := flag.NewFlagSet("gquery", flagErrorHandling)
 	fs.IntVar(&gq.GroupID, "group", 0, "Group ID")
 	if err := fs.Parse(args); err != nil {
 		return ErrUsage
@@ -32,7 +32,7 @@ func (gq GQuery) Run(args []string) error {
 }
 
 // Usage prints a usage message.
-func (gq GQuery) Usage() {
+func (gq *GQuery) Usage() {
 	fmt.Fprint(os.Stderr, `
 scc gquery [OPTIONS]
 

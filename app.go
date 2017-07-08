@@ -27,7 +27,8 @@ func (app *App) Initialize() error {
 		return errors.Wrap(err, "creating client")
 	}
 	app.Commands = map[string]Command{
-		"gquery": GQuery{scc: scc},
+		"gquery": &GQuery{scc: scc},
+		"synth":  &Synth{scc: scc},
 	}
 	return nil
 }

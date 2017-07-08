@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+var flagErrorHandling flag.ErrorHandling = flag.ContinueOnError
+
 func main() {
 	flag.Usage = usage
 
