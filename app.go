@@ -32,6 +32,7 @@ func (app *App) Initialize() error {
 		return err
 	}
 	app.Commands = map[string]Command{
+		"gnew":     &GNew{flagErrorHandling: flagErrorHandling, scc: scc},
 		"gquery":   &GQuery{flagErrorHandling: flagErrorHandling, scc: scc},
 		"querybuf": &QueryBuf{flagErrorHandling: flagErrorHandling, scc: scc},
 		"readbuf":  &ReadBuf{flagErrorHandling: flagErrorHandling, scc: scc},
@@ -50,6 +51,7 @@ GLOBAL OPTIONS
   -scsynth                     Remote address of scsynth.
 
 COMMANDS
+  gnew                         Create a new group.
   gquery                       Query the SuperCollider node graph.
   help                         Print this help message.
   querybuf                     Query for information about a buffer.
