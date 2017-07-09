@@ -2,9 +2,7 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
-	"os"
 )
 
 var flagErrorHandling flag.ErrorHandling = flag.ContinueOnError
@@ -18,20 +16,4 @@ func main() {
 	if err := app.Run(); err != nil {
 		log.Fatal(err)
 	}
-}
-
-func usage() {
-	fmt.Fprintf(os.Stderr, `
-scc [GLOBAL OPTIONS] command [COMMAND OPTIONS]
-
-GLOBAL OPTIONS
-  -scsynth                     Remote address of scsynth.
-
-COMMANDS
-  gquery                       Query the SuperCollider node graph.
-  help                         Print this help message.
-  synth                        Create a synth node.
-
-For help with a particular command, "scc help COMMAND"
-`)
 }

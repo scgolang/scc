@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"fmt"
+	"os"
 	"time"
 
 	"github.com/pkg/errors"
@@ -29,15 +31,34 @@ func (app *App) Initialize() error {
 	if _, err := scc.AddDefaultGroup(); err != nil {
 		return err
 	}
-	if err := scc.SendAllDefs(); err != nil {
-		return err
-	}
 	app.Commands = map[string]Command{
-		"gquery": &GQuery{scc: scc},
-		"synth":  &Synth{scc: scc},
+		"gquery":   &GQuery{flagErrorHandling: flagErrorHandling, scc: scc},
+		"querybuf": &QueryBuf{flagErrorHandling: flagErrorHandling, scc: scc},
+		"readbuf":  &ReadBuf{flagErrorHandling: flagErrorHandling, scc: scc},
+		"senddefs": &SendDefs{flagErrorHandling: flagErrorHandling, scc: scc},
+		"synth":    &Synth{flagErrorHandling: flagErrorHandling, scc: scc},
 	}
 	app.Commands["help"] = Help{Commands: app.Commands}
 	return nil
+}
+
+func usage() {
+	fmt.Fprintf(os.Stderr, `
+scc [GLOBAL OPTIONS] command [COMMAND OPTIONS]
+
+GLOBAL OPTIONS
+  -scsynth                     Remote address of scsynth.
+
+COMMANDS
+  gquery                       Query the SuperCollider node graph.
+  help                         Print this help message.
+  querybuf                     Query for information about a buffer.
+  readbuf                      Read a buffer.
+  senddefs                     Send all the synthdefs that are registered in the sc pkg.
+  synth                        Create a synth node.
+
+For help with a particular command, "scc help COMMAND"
+`)
 }
 
 // Run runs the application.

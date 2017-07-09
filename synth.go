@@ -21,11 +21,12 @@ type Synth struct {
 	Group    int
 	ID       int
 
-	scc *sc.Client
+	flagErrorHandling flag.ErrorHandling
+	scc               *sc.Client
 }
 
 func (s *Synth) Initialize(args []string) error {
-	fs := flag.NewFlagSet("synth", flagErrorHandling)
+	fs := flag.NewFlagSet("synth", s.flagErrorHandling)
 	fs.StringVar(&s.Action, "action", "AddToTail", "add action")
 	fs.StringVar(&s.Def, "def", "", "synthdef name")
 	fs.IntVar(&s.Group, "group", 0, "group ID")
@@ -60,7 +61,7 @@ func (s *Synth) Run(args []string) error {
 // Usage prints out a usage message.
 func (s *Synth) Usage() {
 	fmt.Fprint(os.Stderr, `
-scc synth [OPTIONS] [PARAMETERS]
+scc [GLOBAL OPTIONS] synth [OPTIONS] [PARAMETERS]
 
 OPTIONS
   -action                         (OPTIONAL) Add action. Default is AddToTail. Possible values are listed here https://git.io/vQ6zA
