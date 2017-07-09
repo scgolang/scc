@@ -93,7 +93,7 @@ func getActionNumber(s string) (int32, error) {
 
 func getSynthControls(args []string) (map[string]float32, bool) {
 	if len(args) == 0 {
-		return nil, false
+		return nil, true
 	}
 	m := map[string]float32{}
 

@@ -43,12 +43,11 @@ OPTIONS
 
 func printGroup(g *sc.GroupNode) error {
 	err := printGroupP(g, "")
-	fmt.Println("")
 	return err
 }
 
 func printGroupP(g *sc.GroupNode, prefix string) error {
-	fmt.Printf("%sgroup(id=%d)", prefix, g.ID())
+	fmt.Printf("group(id=%d)\n", g.ID())
 
 	for i, child := range g.Children {
 		if i == len(g.Children)-1 {
@@ -56,18 +55,11 @@ func printGroupP(g *sc.GroupNode, prefix string) error {
 		} else {
 			fmt.Printf(prefix + "\u251c\u2500\u2500 ")
 		}
-		var childPrefix string
-
-		if i == len(g.Children)-1 {
-			childPrefix = prefix + "    "
-		} else {
-			childPrefix = prefix + "\u2502   "
-		}
 		switch c := child.(type) {
 		case *sc.SynthNode:
-			printSynthP(c, childPrefix)
+			printSynthP(c, "")
 		case *sc.GroupNode:
-			printGroupP(c, childPrefix)
+			printGroupP(c, prefix+"    ")
 		default:
 			return errors.Errorf("unrecognized node type: %T", c)
 		}
@@ -76,4 +68,9 @@ func printGroupP(g *sc.GroupNode, prefix string) error {
 }
 
 func printSynthP(s *sc.SynthNode, prefix string) {
+	fmt.Printf(prefix+"%s(id=%d", s.DefName, s.ID)
+	for name, val := range s.Controls {
+		fmt.Printf(", %s=%f", name, val)
+	}
+	fmt.Printf(")\n")
 }

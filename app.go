@@ -26,10 +26,17 @@ func (app *App) Initialize() error {
 	if err != nil {
 		return errors.Wrap(err, "creating client")
 	}
+	if _, err := scc.AddDefaultGroup(); err != nil {
+		return err
+	}
+	if err := scc.SendAllDefs(); err != nil {
+		return err
+	}
 	app.Commands = map[string]Command{
 		"gquery": &GQuery{scc: scc},
 		"synth":  &Synth{scc: scc},
 	}
+	app.Commands["help"] = Help{Commands: app.Commands}
 	return nil
 }
 

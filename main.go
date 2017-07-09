@@ -30,6 +30,7 @@ GLOBAL OPTIONS
 COMMANDS
   gquery                       Query the SuperCollider node graph.
   help                         Print this help message.
+  synth                        Create a synth node.
 
 For help with a particular command, "scc help COMMAND"
 `)
