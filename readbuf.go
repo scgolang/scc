@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 
 	"github.com/pkg/errors"
 	"github.com/scgolang/sc"
@@ -12,7 +13,8 @@ import (
 
 // ReadBuf reads a buffer.
 type ReadBuf struct {
-	Num int
+	Channels IntFlags
+	Num      int
 
 	flagErrorHandling flag.ErrorHandling
 	scc               *sc.Client
@@ -21,6 +23,7 @@ type ReadBuf struct {
 // Run runs the command.
 func (rb ReadBuf) Run(args []string) error {
 	fs := flag.NewFlagSet("readbuf", rb.flagErrorHandling)
+	fs.Var(&rb.Channels, "channel", "channel(s) to read")
 	fs.IntVar(&rb.Num, "num", 0, "buffer number")
 	if err := fs.Parse(args); err != nil {
 		return ErrUsage
@@ -40,7 +43,7 @@ func (rb ReadBuf) Run(args []string) error {
 	_ = f.Close()
 
 	// Read the buffer.
-	_, err = rb.scc.ReadBuffer(p, int32(rb.Num))
+	_, err = rb.scc.ReadBuffer(p, int32(rb.Num), rb.Channels...)
 	return errors.Wrap(err, "reading buffer")
 }
 
@@ -50,6 +53,27 @@ func (rb ReadBuf) Usage() {
 scc [GLOBAL OPTIONS] readbuf [OPTIONS] FILE
 
 OPTIONS
-  -num                         (REQUIRED) Buffer number.
+  -channel    (OPTIONAL) Channel(s) to read. Can be passed multiple times. Indices start at 0.
+  -num        (REQUIRED) Buffer number.
+
+FILE will be converted to an absolute path.
 `)
+}
+
+// IntFlags provides a way to pass multiple int flags.
+type IntFlags []int
+
+// String converts intflags to a string.
+func (ifs IntFlags) String() string {
+	return fmt.Sprintf("%#v", ifs)
+}
+
+// Set sets intflags from the provided string.
+func (ifs *IntFlags) Set(s string) error {
+	i, err := strconv.ParseInt(s, 10, 64)
+	if err != nil {
+		return err
+	}
+	*ifs = append(*ifs, int(i))
+	return nil
 }
