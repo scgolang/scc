@@ -34,6 +34,7 @@ func (app *App) Initialize() error {
 	app.Commands = map[string]Command{
 		"gnew":     &GNew{flagErrorHandling: flagErrorHandling, scc: scc},
 		"gquery":   &GQuery{flagErrorHandling: flagErrorHandling, scc: scc},
+		"nset":     &Nset{flagErrorHandling: flagErrorHandling, scc: scc},
 		"querybuf": &QueryBuf{flagErrorHandling: flagErrorHandling, scc: scc},
 		"readbuf":  &ReadBuf{flagErrorHandling: flagErrorHandling, scc: scc},
 		"senddefs": &SendDefs{flagErrorHandling: flagErrorHandling, scc: scc},
@@ -54,6 +55,7 @@ COMMANDS
   gnew                         Create a new group.
   gquery                       Query the SuperCollider node graph.
   help                         Print this help message.
+  nset                         Set a node's control value(s).
   querybuf                     Query for information about a buffer.
   readbuf                      Read a buffer.
   senddefs                     Send all the synthdefs that are registered in the sc pkg.
