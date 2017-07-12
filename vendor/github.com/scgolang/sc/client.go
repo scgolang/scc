@@ -249,6 +249,49 @@ func (c *Client) NextSynthID() int32 {
 	return atomic.AddInt32(&c.nextSynthID, 1)
 }
 
+// NodeFree stops a node abruptly, removes it from its group, and frees its memory.
+// Using this method can cause a click if the node is not silent at the time it is freed.
+func (c *Client) NodeFree(id int32) error {
+	return c.oscConn.Send(osc.Message{
+		Address:   nodeFreeAddress,
+		Arguments: osc.Arguments{osc.Int(id)},
+	})
+}
+
+// NodeMap causes controls of a node to be read from a control bus.
+// The first argument is the node ID.
+// The second argument is a map from control names to control bus indices.
+func (c *Client) NodeMap(id int32, m map[string]int32) error {
+	msg := osc.Message{
+		Address: nodeMapAddress,
+		Arguments: osc.Arguments{
+			osc.Int(id),
+		},
+	}
+	for k, v := range m {
+		msg.Arguments = append(msg.Arguments, osc.String(k))
+		msg.Arguments = append(msg.Arguments, osc.Int(v))
+	}
+	return c.oscConn.Send(msg)
+}
+
+// NodeMapa causes controls of a node to be read from an audio bus.
+// The first argument is the node ID.
+// The second argument is a map from control names to audio bus indices.
+func (c *Client) NodeMapa(id int32, m map[string]int32) error {
+	msg := osc.Message{
+		Address: nodeMapaAddress,
+		Arguments: osc.Arguments{
+			osc.Int(id),
+		},
+	}
+	for k, v := range m {
+		msg.Arguments = append(msg.Arguments, osc.String(k))
+		msg.Arguments = append(msg.Arguments, osc.Int(v))
+	}
+	return c.oscConn.Send(msg)
+}
+
 // NodeSet sets a control value on a node.
 func (c *Client) NodeSet(id int32, ctls map[string]float32) error {
 	msg := osc.Message{

@@ -69,9 +69,9 @@ func printGroupP(g *sc.GroupNode, prefix string) error {
 }
 
 func printSynthP(s *sc.SynthNode, prefix string) {
-	fmt.Printf(prefix+"%s(id=%d", s.DefName, s.ID)
+	fmt.Printf(prefix+"%s(id=%d", s.DefName, s.ID())
 	for name, val := range s.Controls {
-		fmt.Printf(", %s=%f", name, val)
+		fmt.Printf(", %s=%s", name, val)
 	}
 	fmt.Printf(")\n")
 }
