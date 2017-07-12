@@ -49,7 +49,7 @@ func (app *App) Initialize() error {
 
 func usage() {
 	fmt.Fprintf(os.Stderr, `
-scc [GLOBAL OPTIONS] command [COMMAND OPTIONS]
+scc [GLOBAL OPTIONS] COMMAND [COMMAND OPTIONS]
 
 GLOBAL OPTIONS
   -scsynth                     Remote address of scsynth.
