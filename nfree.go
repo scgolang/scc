@@ -27,9 +27,6 @@ func (nfree Nfree) Run(args []string) error {
 	if nfree.NodeID <= 0 {
 		return ErrUsage
 	}
-	if len(fs.Args()) == 0 {
-		return ErrUsage // Print a usage message if there are no kv pairs.
-	}
 	return nfree.scc.NodeFree(int32(nfree.NodeID))
 }
 

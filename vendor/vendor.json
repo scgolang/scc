@@ -57,10 +57,10 @@
 			"revisionTime": "2017-03-13T03:35:09Z"
 		},
 		{
-			"checksumSHA1": "4TlIS332pfwd6+56LLxZIxgBWiQ=",
+			"checksumSHA1": "XoKzMwGZSgJWsiIPSzs7p2C2N4A=",
 			"path": "github.com/scgolang/sc",
-			"revision": "5c8b459c85ad6480dcf7e292d1dcbea91514a225",
-			"revisionTime": "2017-07-12T21:04:29Z"
+			"revision": "ba688b75f8ceab68417498dc600a8b33b445c534",
+			"revisionTime": "2017-07-12T21:17:54Z"
 		}
 	],
 	"rootPath": "github.com/scgolang/scc"
