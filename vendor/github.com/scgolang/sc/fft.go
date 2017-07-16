@@ -1,5 +1,6 @@
 package sc
 
+// FFT implements the Fast Fourier Transform.
 // The fast fourier transform analyzes the frequency content of a signal,
 // which can be useful for audio analysis or for frequency-domain sound processing (phase vocoder).
 type FFT struct {
@@ -54,5 +55,5 @@ func (fft FFT) Rate(rate int8) Input {
 		panic("FFT expects In to not be nil")
 	}
 	(&fft).defaults()
-	return UgenInput("FFT", rate, 0, 1, fft.Buffer, fft.In, fft.Hop, fft.WinType, fft.Active, fft.WinSize)
+	return NewInput("FFT", rate, 0, 1, fft.Buffer, fft.In, fft.Hop, fft.WinType, fft.Active, fft.WinSize)
 }

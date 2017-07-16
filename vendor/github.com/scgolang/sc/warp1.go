@@ -53,8 +53,10 @@ func (wrp *Warp1) defaults() {
 	}
 }
 
+// Rate creates a new ugen at a specific rate.
+// If rate is an unsupported value this method will cause a runtime panic.
 func (wrp Warp1) Rate(rate int8) Input {
 	CheckRate(rate)
 	(&wrp).defaults()
-	return UgenInput("Warp1", rate, 0, wrp.NumChannels, wrp.BufNum, wrp.Pointer, wrp.FreqScale, wrp.WindowSize, wrp.EnvBufNum, wrp.Overlaps, wrp.WindowRandRatio, wrp.Interp)
+	return NewInput("Warp1", rate, 0, wrp.NumChannels, wrp.BufNum, wrp.Pointer, wrp.FreqScale, wrp.WindowSize, wrp.EnvBufNum, wrp.Overlaps, wrp.WindowRandRatio, wrp.Interp)
 }

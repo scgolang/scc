@@ -13,10 +13,9 @@ func (dust *Dust) defaults() {
 }
 
 // Rate creates a new ugen at a specific rate.
-// If rate is an unsupported value this method will cause
-// a runtime panic.
+// If rate is an unsupported value this method will cause a runtime panic.
 func (dust Dust) Rate(rate int8) Input {
 	CheckRate(rate)
 	(&dust).defaults()
-	return UgenInput("Dust", rate, 0, 1, dust.Density)
+	return NewInput("Dust", rate, 0, 1, dust.Density)
 }

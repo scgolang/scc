@@ -58,8 +58,10 @@ func (tg *TGrains) defaults() {
 	}
 }
 
+// Rate creates a new ugen at a specific rate.
+// If rate is an unsupported value this method will cause a runtime panic.
 func (tg TGrains) Rate(rate int8) Input {
 	CheckRate(rate)
 	(&tg).defaults()
-	return UgenInput("TGrains", rate, 0, tg.NumChannels, tg.Trigger, tg.BufNum, tg.GRate, tg.CenterPos, tg.Dur, tg.Pan, tg.Amp, tg.Interp)
+	return NewInput("TGrains", rate, 0, tg.NumChannels, tg.Trigger, tg.BufNum, tg.GRate, tg.CenterPos, tg.Dur, tg.Pan, tg.Amp, tg.Interp)
 }

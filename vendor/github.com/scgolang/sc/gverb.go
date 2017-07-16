@@ -1,6 +1,6 @@
 package sc
 
-// A two-channel reverb UGen.
+// GVerb is a two-channel reverb UGen.
 // Based on the "GVerb" LADSPA effect by Juhana Sadeharju (kouhia at nic.funet.fi).
 type GVerb struct {
 	// Mono Input
@@ -64,5 +64,5 @@ func (gv GVerb) Rate(rate int8) Input {
 		panic("GVerb expects In to not be nil")
 	}
 	(&gv).defaults()
-	return UgenInput("GVerb", rate, 0, 2, gv.In, gv.RoomSize, gv.RevTime, gv.Damping, gv.InputBW, gv.Spread, gv.DryLevel, gv.EarlyRefLevel, gv.TailLevel, gv.MaxRoomSize)
+	return NewInput("GVerb", rate, 0, 2, gv.In, gv.RoomSize, gv.RevTime, gv.Damping, gv.InputBW, gv.Spread, gv.DryLevel, gv.EarlyRefLevel, gv.TailLevel, gv.MaxRoomSize)
 }
