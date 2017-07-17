@@ -31,6 +31,7 @@ Unit Generators for sc.
 | EnvGen                      | Yes       |
 | FFT                         | No        |
 | FSinOsc                     | Yes       |
+| Formant                     | No        |
 | Formlet                     | Yes       |
 | FreeVerb                    | Yes       |
 | GVerb                       | Yes       |
@@ -46,11 +47,11 @@ Unit Generators for sc.
 | Integrator                  | Yes       |
 | Klang                       | No        |
 | Klank                       | No        |
-| Latch                       | No        |
+| Latch                       | Yes       |
 | LFCub                       | Yes       |
-| LFNoise0                    | No        |
+| LFNoise0                    | Yes       |
 | LFNoise1                    | Yes       |
-| LFNoise2                    | No        |
+| LFNoise2                    | Yes       |
 | LFNoiseClipNoise            | No        |
 | LFPar                       | No        |
 | LFPulse                     | Yes       |
@@ -59,7 +60,7 @@ Unit Generators for sc.
 | LPF                         | Yes       |
 | Lag                         | No        |
 | LinPan2                     | No        |
-| Line                        | No        |
+| Line                        | Yes       |
 | Median                      | No        |
 | MouseX                      | Yes       |
 | MouseY                      | Yes       |
@@ -68,7 +69,7 @@ Unit Generators for sc.
 | Osc                         | No        |
 | Out                         | Yes       |
 | PMOsc                       | Yes       |
-| Pan2                        | No        |
+| Pan2                        | Yes       |
 | Pan4                        | No        |
 | PanAz                       | No        |
 | PanB2                       | No        |
