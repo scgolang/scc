@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"os"
@@ -41,6 +42,7 @@ func (app *App) Initialize() error {
 		"querybuf": &QueryBuf{flagErrorHandling: flagErrorHandling, scc: scc},
 		"readbuf":  &ReadBuf{flagErrorHandling: flagErrorHandling, scc: scc},
 		"senddefs": &SendDefs{flagErrorHandling: flagErrorHandling, scc: scc},
+		"server":   &Server{flagErrorHandling: flagErrorHandling, scc: scc},
 		"synth":    &Synth{flagErrorHandling: flagErrorHandling, scc: scc},
 	}
 	app.Commands["help"] = Help{Commands: app.Commands}
@@ -65,6 +67,7 @@ COMMANDS
   querybuf                     Query for information about a buffer.
   readbuf                      Read a buffer.
   senddefs                     Send all the synthdefs that are registered in the sc pkg.
+  server                       Control one or more running instances of scsynth.
   synth                        Create a synth node.
 
 For help with a particular command, "scc help COMMAND"
@@ -72,7 +75,7 @@ For help with a particular command, "scc help COMMAND"
 }
 
 // Run runs the application.
-func (app *App) Run() error {
+func (app *App) Run(ctx context.Context) error {
 	if err := app.Initialize(); err != nil {
 		return err
 	}

@@ -25,6 +25,7 @@ type Synth struct {
 	scc               *sc.Client
 }
 
+// Initialize initializes a synth.
 func (s *Synth) Initialize(args []string) error {
 	fs := flag.NewFlagSet("synth", s.flagErrorHandling)
 	fs.StringVar(&s.Action, "action", "AddToTail", "add action")

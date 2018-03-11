@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"log"
 )
@@ -13,7 +14,7 @@ func main() {
 	app := &App{
 		Config: ParseConfig(),
 	}
-	if err := app.Run(); err != nil {
+	if err := app.Run(context.Background()); err != nil {
 		log.Fatal(err)
 	}
 }
